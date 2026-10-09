@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TaskForm from "./components/TaskForm";
+import Task from "./components/Task";
 import "./App.css";
 
 function App() {
@@ -14,7 +15,11 @@ function App() {
     <main>
       <h1>Task Manager</h1>
       <TaskForm onAddTask={addTask} />
-      <p>Sarcini în memorie: {tasks.length}</p>
+      <ul className="task-list">
+        {tasks.map((task) => (
+          <Task key={task.id} task={task} />
+        ))}
+      </ul>
     </main>
   );
 }
